@@ -1,0 +1,729 @@
+/* ===== Admin Layout ===== */
+.admin-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--bg-secondary);
+}
+
+/* ===== Admin Header ===== */
+.admin-header {
+    background-color: var(--bg-white);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
+}
+
+.admin-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 100%;
+}
+
+.admin-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.admin-logo svg {
+    color: var(--text-secondary);
+}
+
+.admin-actions {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-left: auto;
+}
+
+.lang-toggle {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    min-width: auto;
+}
+
+/* ===== Admin Content ===== */
+.admin-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* ===== Admin Sidebar ===== */
+.admin-sidebar {
+    width: 320px;
+    background-color: var(--bg-white);
+    border-right: 1px solid var(--border-color);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.photo-search {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid var(--border-color);
+    font-size: 0.85rem;
+    background: var(--bg-white);
+    margin-bottom: 1rem;
+    font-family: inherit;
+}
+
+.photo-search:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.sidebar-section {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-section h3 {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+}
+
+.sidebar-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.sidebar-section-header h3 {
+    margin-bottom: 0;
+}
+
+.sidebar-divider {
+    border-top: 1px solid var(--border-color);
+}
+
+.help-text {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.help-text p {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== Collection List ===== */
+.collection-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.collection-item {
+    padding: 0.75rem 1rem;
+    background-color: var(--bg-primary);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+.collection-item:hover {
+    background-color: var(--bg-secondary);
+}
+
+.collection-item.active {
+    border-color: var(--primary-color);
+    background-color: var(--bg-secondary);
+}
+
+.collection-item-name {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.collection-item-count {
+    font-size: 0.75rem;
+    color: var(--text-light);
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+}
+
+/* ===== Photo Library ===== */
+.photo-library {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    max-height: calc(100vh - 400px);
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+.library-photo {
+    aspect-ratio: 1;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    background-color: var(--bg-primary);
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+.library-photo:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
+}
+
+.library-photo:active {
+    cursor: grabbing;
+}
+
+.library-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.library-photo.selected {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(44, 44, 44, 0.1);
+}
+
+.library-photo-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: white;
+    padding: 0.5rem;
+    font-size: 0.7rem;
+    font-weight: 400;
+    transform: translateY(100%);
+    transition: var(--transition);
+}
+
+.library-photo:hover .library-photo-title {
+    transform: translateY(0);
+}
+
+/* ===== Admin Editor ===== */
+.admin-editor {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-primary);
+    overflow: hidden;
+}
+
+.editor-toolbar {
+    padding: 1rem 1.5rem;
+    background-color: var(--bg-white);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+/* ===== Canvas Toolbar ===== */
+.canvas-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--bg-white);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.canvas-toolbar .btn-icon {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.canvas-toolbar .btn-icon:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#zoomLevel {
+    min-width: 50px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* ===== Canvas ===== */
+.canvas-container {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+    background-color: var(--bg-primary);
+    position: relative;
+    min-height: 600px;
+}
+
+.canvas-container.drag-over {
+    background-color: rgba(44, 44, 44, 0.05);
+    border: 3px dashed var(--primary-color);
+}
+
+.canvas-placeholder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: var(--text-light);
+}
+
+.canvas-placeholder svg {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 1rem;
+    opacity: 0.3;
+}
+
+.canvas-placeholder p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.canvas-placeholder .hint {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    opacity: 0.6;
+}
+
+/* ===== Canvas Photo Item ===== */
+.canvas-photo {
+    position: absolute;
+    cursor: move;
+    transition: box-shadow 0.2s ease;
+    border: 3px solid transparent;
+    background-color: transparent;
+    box-shadow: none;
+    overflow: hidden;
+}
+
+.canvas-photo:hover {
+    border-color: rgba(44, 44, 44, 0.3);
+}
+
+.canvas-photo.selected {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(44, 44, 44, 0.1);
+}
+
+.canvas-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+/* Resize Handles */
+.resize-handle {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: var(--primary-color);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.canvas-photo:hover .resize-handle,
+.canvas-photo.selected .resize-handle {
+    opacity: 1;
+}
+
+.resize-handle.nw {
+    top: -6px;
+    left: -6px;
+    cursor: nw-resize;
+}
+
+.resize-handle.ne {
+    top: -6px;
+    right: -6px;
+    cursor: ne-resize;
+}
+
+.resize-handle.sw {
+    bottom: -6px;
+    left: -6px;
+    cursor: sw-resize;
+}
+
+.resize-handle.se {
+    bottom: -6px;
+    right: -6px;
+    cursor: se-resize;
+}
+
+.resize-handle.n {
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: n-resize;
+}
+
+.resize-handle.s {
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: s-resize;
+}
+
+.resize-handle.e {
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: e-resize;
+}
+
+.resize-handle.w {
+    left: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: w-resize;
+}
+
+/* Delete Button */
+.canvas-photo-delete {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
+    background-color: var(--danger-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    font-size: 16px;
+    line-height: 1;
+}
+
+.canvas-photo:hover .canvas-photo-delete,
+.canvas-photo.selected .canvas-photo-delete {
+    opacity: 1;
+}
+
+.canvas-photo-delete:hover {
+    background-color: #c82333;
+}
+
+/* ===== Upload Modal ===== */
+.upload-modal {
+    max-width: 500px;
+}
+
+.upload-preview {
+    width: 100%;
+    height: 200px;
+    background-color: var(--bg-primary);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    position: relative;
+    cursor: pointer;
+    border: 2px dashed var(--border-color);
+    transition: var(--transition);
+}
+
+.upload-preview:hover,
+.upload-preview.drag-over {
+    border-color: var(--primary-color);
+    background-color: rgba(44, 44, 44, 0.02);
+}
+
+.upload-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.upload-placeholder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.upload-placeholder svg {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 0.75rem;
+    opacity: 0.5;
+}
+
+.upload-placeholder p {
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.library-photo-delete {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 24px;
+    height: 24px;
+    background-color: rgba(220, 38, 38, 0.9);
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    font-size: 14px;
+    line-height: 1;
+    z-index: 10;
+}
+
+.library-photo:hover .library-photo-delete {
+    opacity: 1;
+}
+
+.library-photo-delete:hover {
+    background-color: rgba(185, 28, 28, 1);
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.form-actions .btn {
+    flex: 1;
+}
+
+/* ===== Toast Container ===== */
+.toast-container {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1200px) {
+    .admin-sidebar {
+        width: 280px;
+    }
+
+    .photo-library {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .admin-content {
+        flex-direction: column;
+        overflow-y: auto;
+    }
+
+    .admin-sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        max-height: 400px;
+    }
+
+    .photo-library {
+        max-height: 300px;
+    }
+
+    .admin-editor {
+        min-height: 500px;
+    }
+
+    .canvas-container {
+        min-height: 400px;
+    }
+}
+
+@media (max-width: 600px) {
+    .admin-header-content {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .admin-actions {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .admin-actions .btn {
+        font-size: 0.75rem;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .photo-library {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+
+    .canvas-container {
+        padding: 1rem;
+    }
+
+    .upload-modal {
+        max-width: 95%;
+    }
+
+    .toast-container {
+        left: 1rem;
+        right: 1rem;
+        top: 1rem;
+    }
+}
+
+/* ===== Scrollbar Styling ===== */
+.admin-sidebar::-webkit-scrollbar,
+.collection-list::-webkit-scrollbar,
+.photo-library::-webkit-scrollbar,
+.canvas-container::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.admin-sidebar::-webkit-scrollbar-track,
+.collection-list::-webkit-scrollbar-track,
+.photo-library::-webkit-scrollbar-track,
+.canvas-container::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+.admin-sidebar::-webkit-scrollbar-thumb,
+.collection-list::-webkit-scrollbar-thumb,
+.photo-library::-webkit-scrollbar-thumb,
+.canvas-container::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 3px;
+}
+
+.admin-sidebar::-webkit-scrollbar-thumb:hover,
+.collection-list::-webkit-scrollbar-thumb:hover,
+.photo-library::-webkit-scrollbar-thumb:hover,
+.canvas-container::-webkit-scrollbar-thumb:hover {
+    background: var(--text-light);
+}
+
+/* ===== Checkbox Label ===== */
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+}
+
+.checkbox-label span {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+/* ===== Footer ===== */
+.admin-footer {
+    margin-top: auto;
+    padding: 1rem 2rem;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--bg-white);
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+.admin-footer p {
+    margin: 0.25rem 0;
+}
+
+/* ===== Modal EXIF ===== */
+.modal-exif {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.modal-exif h4 {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.exif-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.exif-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.exif-label {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.exif-value {
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="header-left">
+                    <a href="#" class="logo" id="siteLogo">Photo Portfolio</a>
+                </div>
+                <div class="header-right">
+                    <button class="contact-icon" id="contactIcon" aria-label="Contact" title="Contact">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </button>
+                    <button class="lang-toggle" id="langToggle" aria-label="Switch Language">
+                        <span id="langLabel">EN</span>
+                    </button>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="sidebar-collections">
+                    <div class="sidebar-collections-title" id="collectionsTitle">Albums</div>
+                    <div id="sidebarCollections" class="sidebar-collections-list"></div>
+                </div>
+                <div class="sidebar-divider"></div>
+                <a href="#" class="sidebar-link" data-tab="gallery" id="galleryTab">Gallery</a>
+                <a href="#" class="sidebar-link" data-tab="about" id="aboutTab">About</a>
+            </nav>
+        </aside>
+
+        <!-- Sidebar Overlay -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+
+            <!-- Collection Welcome/Description -->
+            <div id="collectionHeader" class="collection-header">
+                <div id="collectionDescription" class="collection-description"></div>
+            </div>
+
+            <!-- Gallery Section -->
+            <section id="gallerySection" class="section">
+                <div class="photo-grid-wrapper">
+                    <div id="photoGrid" class="photo-grid">
+                        <div class="loading">Loading...</div>
+                    </div>
+                </div>
+                <div id="loadMore" class="load-more-container">
+                    <button class="btn btn-primary">Load More</button>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section id="aboutSection" class="section hidden">
+                <div class="container">
+                    <div class="about-title" id="aboutTitle">About</div>
+                    <div id="aboutContent" class="about-content">
+                        <p>Loading...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contactSection" class="section hidden">
+                <div class="container">
+                    <div class="about-title" id="contactTitle">Contact</div>
+                    <div id="contactContent" class="about-content">
+                        <p>Loading...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="container">
+                    <p>&copy; <span id="currentYear">2024</span> <span id="footerCopyright">Photo Portfolio</span></p>
+                    <p id="icpDisplay" class="icp-number hidden"></p>
+                    <button id="loginBtn" class="footer-login">Admin Login</button>
+                    <a href="/admin" id="adminLink" class="footer-login hidden"></a>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2 style="font-size: 1.1rem; font-weight: 400; margin-bottom: 1.5rem; letter-spacing: 0.05em;">Login</h2>
+            <form id="loginForm" class="form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Photo Detail Modal -->
+    <div id="photoModal" class="modal modal-large">
+        <div class="modal-content modal-content-large">
+            <span class="modal-close">&times;</span>
+            <div class="modal-body">
+                <img id="modalPhoto" src="" alt="" class="modal-photo">
+                <div class="modal-info">
+                    <h3 id="modalTitle"></h3>
+                    <p id="modalDescription"></p>
+                </div>
+            </div>
+            <div class="modal-exif" id="modalExif">
+                <h4 id="exifTitle">Photo Info</h4>
+                <div class="exif-grid">
+                    <div class="exif-item">
+                        <span class="exif-label" id="exifCameraLabel">Camera</span>
+                        <span class="exif-value" id="exifCamera">-</span>
+                    </div>
+                    <div class="exif-item">
+                        <span class="exif-label" id="exifLensLabel">Lens</span>
+                        <span class="exif-value" id="exifLens">-</span>
+                    </div>
+                    <div class="exif-item">
+                        <span class="exif-label" id="exifISOLabel">ISO</span>
+                        <span class="exif-value" id="exifISO">-</span>
+                    </div>
+                    <div class="exif-item">
+                        <span class="exif-label" id="exifApertureLabel">Aperture</span>
+                        <span class="exif-value" id="exifAperture">-</span>
+                    </div>
+                    <div class="exif-item">
+                        <span class="exif-label" id="exifShutterLabel">Shutter</span>
+                        <span class="exif-value" id="exifShutter">-</span>
+                    </div>
+                    <div class="exif-item">
+                        <span class="exif-label" id="exifFocalLabel">Focal</span>
+                        <span class="exif-value" id="exifFocal">-</span>
+                    </div>
+                    <div class="exif-item">
+                        <span class="exif-label" id="exifDateLabel">Date</span>
+                        <span class="exif-value" id="exifDate">-</span>
+                    </div>
+                    <div class="exif-item" id="exifGPSItem" style="grid-column: span 2;">
+                        <span class="exif-label" id="exifGPSLabel">Location</span>
+                        <span class="exif-value" id="exifGPS">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

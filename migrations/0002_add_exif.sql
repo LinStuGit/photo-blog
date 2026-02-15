@@ -1,0 +1,12 @@
+-- Add EXIF fields to photos table
+ALTER TABLE photos ADD COLUMN camera_make TEXT;
+ALTER TABLE photos ADD COLUMN camera_model TEXT;
+ALTER TABLE photos ADD COLUMN lens_model TEXT;
+ALTER TABLE photos ADD COLUMN iso INTEGER;
+ALTER TABLE photos ADD COLUMN aperture TEXT;
+ALTER TABLE photos ADD COLUMN shutter_speed TEXT;
+ALTER TABLE photos ADD COLUMN focal_length TEXT;
+ALTER TABLE photos ADD COLUMN exposure_compensation TEXT;
+ALTER TABLE photos ADD COLUMN datetime_taken TEXT;
+ALTER TABLE photos ADD COLUMN gps_latitude REAL;
+ALTER TABLE photos ADD COLUMN gps_longitude REAL;
